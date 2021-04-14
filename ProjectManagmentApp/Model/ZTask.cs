@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjectManagmentApp.Model
-{
-    class ZTask
+{   
+    public class ZTask
     {
         public long Id = DateTime.Now.Ticks;
         public string TaskName { get; set; }
@@ -24,5 +24,6 @@ namespace ProjectManagmentApp.Model
 
         private List<Reaction> _Reaction = new List<Reaction>();
         public List<Reaction> Reaction { get { return _Reaction; } set { _Reaction = value; } }
+
     }
 }

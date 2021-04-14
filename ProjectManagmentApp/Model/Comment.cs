@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectManagmentApp.Model
 {
-    class Comment
+    public class Comment
     {
         public long Id = DateTime.Now.Ticks;
         public long ParentId { get; set; }

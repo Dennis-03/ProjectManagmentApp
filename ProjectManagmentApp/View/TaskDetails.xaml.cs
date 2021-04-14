@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectManagmentApp.Data;
+using ProjectManagmentApp.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,24 +22,24 @@ namespace ProjectManagmentApp.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class CreateTaskView : Page
+    public sealed partial class TaskDetails : Page
     {
-        private string[] selectionItems = new string[] { "Ferdinand", "Frank", "Frida", "Nigel", "Tag", "Tanya", "Tanner", "Todd" };
-        public CreateTaskView()
+        private ZTask zTask;
+        private string assignedTo;
+        private string assignedBy;
+
+        UserManager userManager = UserManager.GetUserManager();
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            zTask = (ZTask)e.Parameter;
+            assignedTo = userManager.GetUser(zTask.AssignedTo).UserName;
+            assignedBy = userManager.GetUser(zTask.AssignedBy).UserName;
+
+        }
+        public TaskDetails()
         {
             this.InitializeComponent();
-        }
-
-        private void PriorityComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void IAssigedTo_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        {
-            var autoSuggestBox = (AutoSuggestBox)sender;
-            var filtered = selectionItems.Where(p => p.StartsWith(autoSuggestBox.Text)).ToArray();
-            autoSuggestBox.ItemsSource = filtered;
         }
     }
 }

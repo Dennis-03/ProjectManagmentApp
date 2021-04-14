@@ -1,4 +1,5 @@
-﻿using ProjectManagmentApp.View;
+﻿using ProjectManagmentApp.Data;
+using ProjectManagmentApp.View;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,9 +24,13 @@ namespace ProjectManagmentApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
+        UserManager userManager = UserManager.GetUserManager();
         public MainPage()
         {
             this.InitializeComponent();
+            userManager.AddUser("Dennis", "dennis");
+            userManager.AddUser("Saravana", "saravana");
         }
 
         private void Hamburger_button_Click(object sender, RoutedEventArgs e)
@@ -34,20 +39,22 @@ namespace ProjectManagmentApp
         }
 
 
-        private void Navigation_menu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void NavigationMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Tasks_menu.IsSelected)
+            if (TasksMenu.IsSelected)
             {
                 MainRenderFrame.Navigate(typeof(TaskView));
             }
-            if (MyTasks_menu.IsSelected)
+            if (MyTasksMenu.IsSelected)
             {
                 MainRenderFrame.Navigate(typeof(MyTasksView));
             }
-            if (CreateTask_menu.IsSelected)
+            if (CreateTaskMenu.IsSelected)
             {
                 MainRenderFrame.Navigate(typeof(CreateTaskView));
             }
+
         }
     }
 }

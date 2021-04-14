@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectManagmentApp.Constants
 {
-    enum PriorityEnum
+    public enum PriorityEnum
     {
         Low,
         Medium,

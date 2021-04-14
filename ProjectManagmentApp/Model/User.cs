@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectManagmentApp.Model
 {
-    class User
+    public class User
     {
         public uint Id { get; set; }
         public string UserName { get; set; }

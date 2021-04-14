@@ -43,5 +43,9 @@ namespace ProjectManagmentApp.Data
             }
             return null;
         }
+        public User GetUser(uint Id)
+        {
+            return UserList.Find(user => user.Id == Id);
+        }
     }
 }

@@ -8,7 +8,20 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-
-    </Grid>
+    <StackPanel>
+        <TextBox Name="ITaskName"/>
+        <TextBox Name="ITaskDescripion"/>
+        <ComboBox Name="PriorityComboBox"
+                  SelectionChanged="PriorityComboBox_SelectionChanged">
+            <ComboBoxItem Content="Low" IsSelected="True"/>
+            <ComboBoxItem Content="Medium"/>
+            <ComboBoxItem Content="High"/>
+        </ComboBox>
+        <AutoSuggestBox Name="IAssigedTo"
+                        QueryIcon="Account"
+                        TextChanged="IAssigedTo_TextChanged"/>
+        <CalendarDatePicker Name="IDueDate"/>
+        <TimePicker x:Name="IDueDateTime"/>
+        
+    </StackPanel>
 </Page>

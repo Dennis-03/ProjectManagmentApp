@@ -36,5 +36,12 @@ namespace ProjectManagmentApp.View
             taskManager.AddTask("Complete Pending tasks", "Complete all the pending UWP videos", PriorityEnum.High, 2, 1, DateTime.Now, DateTime.Now);
             taskList = new ObservableCollection<ZTask>(taskManager.ListAllTasks());
         }
+
+        private void TaskList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ZTask clickedItem = (ZTask)e.ClickedItem;
+            ZTask zTask= taskManager.GetZTask(clickedItem.Id);
+            TaskDetailsFrame.Navigate(typeof(TaskDetails),zTask);
+        }
     }
 }

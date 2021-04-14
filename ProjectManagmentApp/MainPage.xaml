@@ -14,14 +14,14 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button Name="Hamburger_button"
+            <Button Name="HamburgerButton"
                     Content="&#xE700;"
                     FontFamily="Segoe MDL2 Assets"
                     FontSize="25"
                     Padding="10"
                     Click="Hamburger_button_Click"
                     />
-            <TextBlock Name="Title_block" 
+            <TextBlock Name="TitleBlock" 
                        Text="Project Managment"
                        Margin="10,0"
                        FontSize="18"
@@ -34,9 +34,9 @@
                    Name="MainSplitView">
             <SplitView.Pane>
                 <StackPanel Orientation="Vertical">
-                    <ListBox Name="Navigation_menu"
-                             SelectionChanged="Navigation_menu_SelectionChanged">
-                        <ListBoxItem Name="Tasks_menu"
+                    <ListBox Name="NavigationMenu"
+                             SelectionChanged="NavigationMenu_SelectionChanged">
+                        <ListBoxItem Name="TasksMenu"
                                      IsEnabled="True">
                             <StackPanel Orientation="Horizontal" >
                                 <TextBlock Text="&#xE160;"
@@ -49,7 +49,7 @@
                                    FontSize="16"/>
                             </StackPanel>
                         </ListBoxItem>
-                        <ListBoxItem Name="MyTasks_menu">
+                        <ListBoxItem Name="MyTasksMenu">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="&#xE8CF;"
                                    FontFamily="Segoe MDL2 Assets"
@@ -61,7 +61,7 @@
                                    FontSize="16"/>
                             </StackPanel>
                         </ListBoxItem>
-                        <ListBoxItem Name="CreateTask_menu">
+                        <ListBoxItem Name="CreateTaskMenu">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="&#xE109;"
                                    FontFamily="Segoe MDL2 Assets"
