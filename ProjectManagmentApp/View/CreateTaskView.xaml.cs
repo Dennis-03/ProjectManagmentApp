@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagmentApp.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,6 +24,9 @@ namespace ProjectManagmentApp.View
     public sealed partial class CreateTaskView : Page
     {
         private string[] selectionItems = new string[] { "Ferdinand", "Frank", "Frida", "Nigel", "Tag", "Tanya", "Tanner", "Todd" };
+
+        private ZTask ztask = new ZTask();
+
         public CreateTaskView()
         {
             this.InitializeComponent();
@@ -38,6 +42,17 @@ namespace ProjectManagmentApp.View
             var autoSuggestBox = (AutoSuggestBox)sender;
             var filtered = selectionItems.Where(p => p.StartsWith(autoSuggestBox.Text)).ToArray();
             autoSuggestBox.ItemsSource = filtered;
+        }
+
+        private void CreateTask_Click(object sender, RoutedEventArgs e)
+        {
+            ztask.TaskName = ITaskName.Text;
+            ztask.Description = ITaskDescripion.Text;
+        }
+
+        private void IDueDate_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
+        {
+            var date= IDueDate.SelectedDate;
         }
     }
 }

@@ -9,11 +9,9 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    
     <StackPanel Margin="10"
-                Background="#111"
                 Padding="10"
-                CornerRadius="5">
+                CornerRadius="3" >
         <TextBlock Text="{x:Bind ZTask.TaskName}"
                    FontSize="18"/>
         <TextBlock Text="{x:Bind ZTask.Description}"

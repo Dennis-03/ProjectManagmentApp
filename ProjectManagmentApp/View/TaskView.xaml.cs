@@ -1,6 +1,7 @@
 ﻿using ProjectManagmentApp.Constants;
 using ProjectManagmentApp.Data;
 using ProjectManagmentApp.Model;
+using ProjectManagmentApp.View.TaskUserControls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -32,8 +33,8 @@ namespace ProjectManagmentApp.View
         {
             this.InitializeComponent();
             taskManager.AddTask("Complete UWP Training", "Complete all the pending UWP videos", PriorityEnum.High, 2, 1, DateTime.Now, DateTime.Now);
-            taskManager.AddTask("UWP Training", "Complete all the pending UWP videos", PriorityEnum.High, 2, 1, DateTime.Now, DateTime.Now);
-            taskManager.AddTask("Complete Pending tasks", "Complete all the pending UWP videos", PriorityEnum.High, 2, 1, DateTime.Now, DateTime.Now);
+            taskManager.AddTask("UWP Training", "Complete all the pending UWP videos", PriorityEnum.Medium, 2, 1, DateTime.Now, DateTime.Now);
+            taskManager.AddTask("Complete Pending tasks", "Complete all the pending UWP videos Complete all the pending UWP videos", PriorityEnum.Low, 2, 1, DateTime.Now, DateTime.Now);
             taskList = new ObservableCollection<ZTask>(taskManager.ListAllTasks());
         }
 

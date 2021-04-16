@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,6 +28,7 @@ namespace ProjectManagmentApp.View
         private ZTask zTask;
         private string assignedTo;
         private string assignedBy;
+        private SolidColorBrush PriorityColor;
 
         UserManager userManager = UserManager.GetUserManager();
 
@@ -35,6 +37,20 @@ namespace ProjectManagmentApp.View
             zTask = (ZTask)e.Parameter;
             assignedTo = userManager.GetUser(zTask.AssignedTo).UserName;
             assignedBy = userManager.GetUser(zTask.AssignedBy).UserName;
+
+            if (zTask.Priority == Constants.PriorityEnum.Low)
+            {
+                PriorityColor = new SolidColorBrush(Color.FromArgb(255, 0, 255, 0));
+            }
+            else if (zTask.Priority == Constants.PriorityEnum.Medium)
+            {
+                PriorityColor = new SolidColorBrush(Color.FromArgb(255, 255, 160, 0));
+            }
+            else
+            {
+                PriorityColor = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
+            }
+
 
         }
         public TaskDetails()

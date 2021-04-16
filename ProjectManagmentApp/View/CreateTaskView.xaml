@@ -18,10 +18,12 @@
             <ComboBoxItem Content="High"/>
         </ComboBox>
         <AutoSuggestBox Name="IAssigedTo"
-                        QueryIcon="Account"
+                        QueryIcon="OtherUser"
                         TextChanged="IAssigedTo_TextChanged"/>
-        <CalendarDatePicker Name="IDueDate"/>
-        <TimePicker x:Name="IDueDateTime"/>
-        
+        <DatePicker Name="IDueDate" />
+        <Button Name="CreateTask"
+                Content="Create task"
+                Click="CreateTask_Click"/>
+
     </StackPanel>
 </Page>

@@ -6,8 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{StaticResource PrimaryColor}">
 
+    <Page.Resources>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Foreground" Value="AliceBlue"/>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -20,7 +26,7 @@
                     FontSize="25"
                     Padding="10"
                     Click="Hamburger_button_Click"
-                    />
+                    Background="{StaticResource PrimaryColor}"/>
             <TextBlock Name="TitleBlock" 
                        Text="Project Managment"
                        Margin="10,0"
@@ -31,10 +37,13 @@
                    Grid.Row="1"
                    CompactPaneLength="50"
                    OpenPaneLength="200"
-                   Name="MainSplitView">
+                   Name="MainSplitView"
+                   PaneBackground="{StaticResource PrimaryColor}">
             <SplitView.Pane>
                 <StackPanel Orientation="Vertical">
                     <ListBox Name="NavigationMenu"
+                             CornerRadius="5"
+                             Background="{StaticResource PrimaryColor}"
                              SelectionChanged="NavigationMenu_SelectionChanged">
                         <ListBoxItem Name="TasksMenu"
                                      IsEnabled="True">

@@ -132,6 +132,9 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\ZTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignIn.xaml.cs">
+      <DependentUpon>SignIn.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CreateTaskView.xaml.cs">
       <DependentUpon>CreateTaskView.xaml</DependentUpon>
     </Compile>
@@ -140,6 +143,9 @@
     </Compile>
     <Compile Include="View\TaskDetails.xaml.cs">
       <DependentUpon>TaskDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TaskUserControls\TaskData.xaml.cs">
+      <DependentUpon>TaskData.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TaskUserControls\TaskList.xaml.cs">
       <DependentUpon>TaskList.xaml</DependentUpon>
@@ -172,6 +178,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="SignIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CreateTaskView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -181,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\TaskDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TaskUserControls\TaskData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
