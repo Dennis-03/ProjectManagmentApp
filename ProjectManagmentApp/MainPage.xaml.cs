@@ -24,21 +24,30 @@ namespace ProjectManagmentApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-
         UserManager userManager = UserManager.GetUserManager();
+
+        Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+
         public MainPage()
         {
             this.InitializeComponent();
             userManager.AddUser("Dennis", "dennis");
             userManager.AddUser("Saravana", "saravana");
+            MainSplitView.OpenPaneLength = 200;
+            MainSplitView.CompactPaneLength = 50;
+            TitleBlock.Visibility = Visibility.Visible;
+            NavigationMenu.Visibility = Visibility.Visible;
+            TasksMenu.IsSelected = true;
+            if (string.IsNullOrEmpty((string)localSettings.Values["UserName"]))
+            {
+                RedirectSignIn();
+            }
         }
 
         private void Hamburger_button_Click(object sender, RoutedEventArgs e)
         {
             MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;
         }
-
-
 
         private void NavigationMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -54,7 +63,36 @@ namespace ProjectManagmentApp
             {
                 MainRenderFrame.Navigate(typeof(CreateTaskView));
             }
+            if (Logout.IsSelected)
+            {
+                LogoutUser();
+            }
 
+        }
+
+        public void RedirectSignIn()
+        {
+            MainRenderFrame.Navigate(typeof(SignIn));
+            HideMenu();
+        }
+
+
+
+        public void LogoutUser()
+        {
+            localSettings.Values["UserName"] = null;
+            localSettings.Values["Id"] = null;
+            MainRenderFrame.Navigate(typeof(MainPage));
+            HideMenu();
+        }
+
+
+        public void HideMenu()
+        {
+            MainSplitView.CompactPaneLength = 0;
+            MainSplitView.OpenPaneLength = 0;
+            TitleBlock.Visibility = Visibility.Collapsed;
+            NavigationMenu.Visibility = Visibility.Collapsed;
         }
     }
 }

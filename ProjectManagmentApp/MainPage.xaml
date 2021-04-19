@@ -19,7 +19,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel x:Name="TitleBlock" 
+                    Orientation="Horizontal">
             <Button Name="HamburgerButton"
                     Content="&#xE700;"
                     FontFamily="Segoe MDL2 Assets"
@@ -27,7 +28,7 @@
                     Padding="10"
                     Click="Hamburger_button_Click"
                     Background="{StaticResource PrimaryColor}"/>
-            <TextBlock Name="TitleBlock" 
+            <TextBlock Name="TitleBlockText" 
                        Text="Project Managment"
                        Margin="10,0"
                        FontSize="18"
@@ -35,8 +36,6 @@
         </StackPanel>
         <SplitView DisplayMode="CompactInline"
                    Grid.Row="1"
-                   CompactPaneLength="50"
-                   OpenPaneLength="200"
                    Name="MainSplitView"
                    PaneBackground="{StaticResource PrimaryColor}">
             <SplitView.Pane>
@@ -45,8 +44,7 @@
                              CornerRadius="5"
                              Background="{StaticResource PrimaryColor}"
                              SelectionChanged="NavigationMenu_SelectionChanged">
-                        <ListBoxItem Name="TasksMenu"
-                                     IsEnabled="True">
+                        <ListBoxItem Name="TasksMenu">
                             <StackPanel Orientation="Horizontal" >
                                 <TextBlock Text="&#xE160;"
                                    FontFamily="Segoe MDL2 Assets"
@@ -78,6 +76,18 @@
                                    Padding="7"/>
                                 <TextBlock Margin="10,0" 
                                    Text="Create Tasks" 
+                                   VerticalAlignment="Center"
+                                   FontSize="16"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Name="Logout">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xE7EA;"
+                                   FontFamily="Segoe MDL2 Assets"
+                                   FontSize="20"
+                                   Padding="7"/>
+                                <TextBlock Margin="10,0" 
+                                   Text="Logout" 
                                    VerticalAlignment="Center"
                                    FontSize="16"/>
                             </StackPanel>

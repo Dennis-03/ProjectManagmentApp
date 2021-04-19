@@ -1,4 +1,6 @@
-﻿using ProjectManagmentApp.Model;
+﻿using ProjectManagmentApp.Constants;
+using ProjectManagmentApp.Data;
+using ProjectManagmentApp.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,8 +25,6 @@ namespace ProjectManagmentApp.View
     /// </summary>
     public sealed partial class CreateTaskView : Page
     {
-        private string[] selectionItems = new string[] { "Ferdinand", "Frank", "Frida", "Nigel", "Tag", "Tanya", "Tanner", "Todd" };
-
         private ZTask ztask = new ZTask();
 
         public CreateTaskView()
@@ -34,14 +34,7 @@ namespace ProjectManagmentApp.View
 
         private void PriorityComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-        }
-
-        private void IAssigedTo_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        {
-            var autoSuggestBox = (AutoSuggestBox)sender;
-            var filtered = selectionItems.Where(p => p.StartsWith(autoSuggestBox.Text)).ToArray();
-            autoSuggestBox.ItemsSource = filtered;
+            ztask.Priority = Enum.Parse < PriorityEnum >(PriorityComboBox.Text);
         }
 
         private void CreateTask_Click(object sender, RoutedEventArgs e)
@@ -50,9 +43,15 @@ namespace ProjectManagmentApp.View
             ztask.Description = ITaskDescripion.Text;
         }
 
-        private void IDueDate_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
+        private void IDueDate_DateChanged(object sender, DatePickerValueChangedEventArgs e)
         {
-            var date= IDueDate.SelectedDate;
+            DateTimeOffset date = (DateTimeOffset)IDueDate.SelectedDate;
+            ztask.DueDate = date.DateTime;
+        }
+
+        private void IAssigedTo_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+
         }
     }
 }

@@ -28,13 +28,14 @@ namespace ProjectManagmentApp.View
         private ZTask zTask;
         private string assignedTo;
         private string assignedBy;
-        private SolidColorBrush PriorityColor;
+        public SolidColorBrush PriorityColor;
 
         UserManager userManager = UserManager.GetUserManager();
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             zTask = (ZTask)e.Parameter;
+
             assignedTo = userManager.GetUser(zTask.AssignedTo).UserName;
             assignedBy = userManager.GetUser(zTask.AssignedBy).UserName;
 

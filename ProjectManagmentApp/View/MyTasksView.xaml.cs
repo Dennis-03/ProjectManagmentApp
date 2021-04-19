@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectManagmentApp.Data;
+using ProjectManagmentApp.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,14 +19,27 @@ using Windows.UI.Xaml.Navigation;
 
 namespace ProjectManagmentApp.View
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+
     public sealed partial class MyTasksView : Page
     {
+        TaskManager taskManager = TaskManager.GetTaskManager();
+
+        private List<ZTask> inCompleteTaskList;
+        private List<ZTask> completedTaskList;
+
+        Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+
         public MyTasksView()
         {
+            long userId = (long)localSettings.Values["Id"];
             this.InitializeComponent();
+            inCompleteTaskList = new List<ZTask>(taskManager.GetUserTasks(userId));
+            completedTaskList = new List<ZTask>(taskManager.GetUserCompletedTasks(userId));
+        }
+
+        private void TaskList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
         }
     }
 }

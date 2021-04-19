@@ -21,7 +21,7 @@ namespace ProjectManagmentApp.Data
 
         private List<ZTask> TaskList = new List<ZTask>();
 
-        public void AddTask(string taskString,string description, PriorityEnum priority, uint assignedTo, uint assignedBy, DateTime assignedDate, DateTime dueDate)
+        public void AddTask(string taskString,string description, PriorityEnum priority, long assignedTo, long assignedBy, DateTime assignedDate, DateTime dueDate,bool completed)
         {
             ZTask addTask = new ZTask
             {
@@ -31,7 +31,8 @@ namespace ProjectManagmentApp.Data
                 AssignedBy = assignedBy,
                 AssignedDate = assignedDate,
                 DueDate = dueDate,
-                Priority = priority
+                Priority = priority,
+                Completed=completed
             };
 
             TaskList.Add(addTask);
@@ -66,6 +67,7 @@ namespace ProjectManagmentApp.Data
                     task.TaskName = updateTask.TaskName;
                     task.DueDate = updateTask.DueDate;
                     task.Comment = updateTask.Comment;
+                    task.Completed = updateTask.Completed;
                 }
             }
         }
@@ -73,6 +75,16 @@ namespace ProjectManagmentApp.Data
         public void DeleteTask(long taskId)
         {
             TaskList.RemoveAll(task => task.Id == taskId);
+        }
+
+        public List<ZTask> GetUserTasks(long userId)
+        {
+            return TaskList.FindAll(task => task.AssignedTo == userId && task.Completed == false) ;
+        }
+
+        public List<ZTask> GetUserCompletedTasks(long userId)
+        {
+            return TaskList.FindAll(task => task.AssignedTo == userId && task.Completed == true);
         }
     }
 }

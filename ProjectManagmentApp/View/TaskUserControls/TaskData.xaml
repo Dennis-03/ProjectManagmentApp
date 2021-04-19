@@ -24,7 +24,7 @@
                        Padding="0,0,5,0"/>
             <Ellipse Name="PriorityCircle" 
                      Width="10" 
-                     Fill="{x:Bind PriorityColor    }"
+                     Fill="{x:Bind PriorityColor}"
                      Height="10" 
                      HorizontalAlignment="Center"/>
             <TextBlock Text="{x:Bind zTask.Priority}"
@@ -54,12 +54,12 @@
 
             <TextBlock Text="Assigned Date" 
                        Margin="0,0,15,0"/>
-            <TextBlock Text="{x:Bind zTask.AssignedDate.Date}"
+            <TextBlock Text="{x:Bind zTask.AssignedDate.ToLongDateString()}"
                        Grid.Column="1"/>
 
             <TextBlock Text="Due Date "
                        Grid.Row="1"/>
-            <TextBlock Text="{x:Bind zTask.DueDate.Date.Date}"
+            <TextBlock Text="{x:Bind zTask.DueDate.ToLongDateString()}"
                        Grid.Row="1"
                        Grid.Column="1"/>
 

@@ -6,7 +6,7 @@
     <Application.Resources>
         <SolidColorBrush x:Key="PrimaryColor" Color="{ThemeResource SystemAltHighColor}"/>
         <SolidColorBrush x:Key="SecondaryColor" Color="{ThemeResource SystemChromeLowColor}"/>
-        <SolidColorBrush x:Key="TertairyColor" Color="#4387D5"/>
+        <SolidColorBrush x:Key="TertairyColor" Color="{ThemeResource SystemAccentColor}"/>
         <SolidColorBrush x:Key="TextColor" Color="#ddf"/>
     </Application.Resources>
     

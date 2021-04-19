@@ -29,13 +29,23 @@ namespace ProjectManagmentApp.View
     {
         private ObservableCollection<ZTask> taskList;
         TaskManager taskManager = TaskManager.GetTaskManager();
+        private string UserName;
+        private string displayString;
+
         public TaskView()
         {
             this.InitializeComponent();
-            taskManager.AddTask("Complete UWP Training", "Complete all the pending UWP videos", PriorityEnum.High, 2, 1, DateTime.Now, DateTime.Now);
-            taskManager.AddTask("UWP Training", "Complete all the pending UWP videos", PriorityEnum.Medium, 2, 1, DateTime.Now, DateTime.Now);
-            taskManager.AddTask("Complete Pending tasks", "Complete all the pending UWP videos Complete all the pending UWP videos", PriorityEnum.Low, 2, 1, DateTime.Now, DateTime.Now);
+            taskManager.AddTask("Complete UWP Training", "Complete all the pending UWP videos", PriorityEnum.High, 2, 1, DateTime.Now, DateTime.Now,false);
+            taskManager.AddTask("UWP Training", "Complete all the pending UWP videos", PriorityEnum.Medium, 1, 2, DateTime.Now, DateTime.Now, false);
+            taskManager.AddTask("Complete Pending tasks", "Complete all the pending UWP videos Complete all the pending UWP videos", PriorityEnum.Low, 1, 2, DateTime.Now, DateTime.Now, true);
             taskList = new ObservableCollection<ZTask>(taskManager.ListAllTasks());
+            var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+            UserName = (string)localSettings.Values["UserName"];
+            if (!string.IsNullOrEmpty(UserName))
+            {
+                displayString = String.Format("Welcome {0} !!!",UserName);
+            }
+
         }
 
         private void TaskList_ItemClick(object sender, ItemClickEventArgs e)

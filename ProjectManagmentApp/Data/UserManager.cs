@@ -19,17 +19,23 @@ namespace ProjectManagmentApp.Data
         }
 
         List<User> UserList = new List<User>();
-        uint id = 1;
-        public void AddUser(string userName, string password)
+        long id = 1;
+        public bool AddUser(string userName, string password)
         {
+            User existingUser = UserList.Find(user => user.UserName == userName);
+            if (existingUser != null)
+            {
+                return false;
+            }
+
             User addUser = new User
             {
                 Password = password,
                 UserName = userName,
                 Id = id++,
             };
-
             UserList.Add(addUser);
+            return true;
         }
 
         public User VerifyUser(string userName, string password)
@@ -43,9 +49,13 @@ namespace ProjectManagmentApp.Data
             }
             return null;
         }
-        public User GetUser(uint Id)
+        public User GetUser(long Id)
         {
             return UserList.Find(user => user.Id == Id);
+        }
+        public List<User> GetAllUsers()
+        {
+            return UserList;
         }
     }
 }
