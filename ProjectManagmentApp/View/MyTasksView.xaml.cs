@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Web;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -35,11 +36,43 @@ namespace ProjectManagmentApp.View
             this.InitializeComponent();
             inCompleteTaskList = new List<ZTask>(taskManager.GetUserTasks(userId));
             completedTaskList = new List<ZTask>(taskManager.GetUserCompletedTasks(userId));
+            InCompleteDropLogo.Text = HttpUtility.HtmlDecode("&#xE019;");
+            CompletedDropLogo.Text = HttpUtility.HtmlDecode("&#xE019;");
+        }
+
+        private void InCompleteTasksButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (InCompleteTaskList.Visibility == Visibility.Visible)
+            {
+                InCompleteDropLogo.Text = HttpUtility.HtmlDecode("&#xE017;");
+                InCompleteTaskList.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                InCompleteDropLogo.Text = HttpUtility.HtmlDecode("&#xE019;");
+                InCompleteTaskList.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void CompletedTasksButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (CompletedTaskList.Visibility == Visibility.Visible)
+            {
+                CompletedDropLogo.Text = HttpUtility.HtmlDecode("&#xE017;");
+                CompletedTaskList.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                CompletedDropLogo.Text = HttpUtility.HtmlDecode("&#xE019;");
+                CompletedTaskList.Visibility = Visibility.Visible;
+            }
         }
 
         private void TaskList_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            ZTask clickedItem = (ZTask)e.ClickedItem;
+            ZTask zTask = taskManager.GetZTask(clickedItem.Id);
+            TaskDetailsFrame.Navigate(typeof(TaskDetails), zTask);
         }
     }
 }
