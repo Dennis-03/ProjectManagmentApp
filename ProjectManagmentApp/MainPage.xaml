@@ -80,6 +80,18 @@
                                    FontSize="16"/>
                             </StackPanel>
                         </ListBoxItem>
+                        <ListBoxItem Name="EditTask">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xE75C;"
+                                   FontFamily="Segoe MDL2 Assets"
+                                   FontSize="20"
+                                   Padding="7"/>
+                                <TextBlock Margin="10,0" 
+                                   Text="Edit Task" 
+                                   VerticalAlignment="Center"
+                                   FontSize="16"/>
+                            </StackPanel>
+                        </ListBoxItem>
                         <ListBoxItem Name="Logout">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="&#xE7EA;"

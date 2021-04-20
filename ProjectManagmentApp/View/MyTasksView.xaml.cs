@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using System.Web;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -27,6 +28,7 @@ namespace ProjectManagmentApp.View
 
         private List<ZTask> inCompleteTaskList;
         private List<ZTask> completedTaskList;
+        public long TaskId;
 
         Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
 
@@ -34,8 +36,8 @@ namespace ProjectManagmentApp.View
         {
             long userId = (long)localSettings.Values["Id"];
             this.InitializeComponent();
-            inCompleteTaskList = new List<ZTask>(taskManager.GetUserTasks(userId));
-            completedTaskList = new List<ZTask>(taskManager.GetUserCompletedTasks(userId));
+            inCompleteTaskList = new List<ZTask>(taskManager.GetUserTasks(userId).FindAll(task => task.Completed==false));
+            completedTaskList = new List<ZTask>(taskManager.GetUserTasks(userId).FindAll(task => task.Completed==true));
             InCompleteDropLogo.Text = HttpUtility.HtmlDecode("&#xE019;");
             CompletedDropLogo.Text = HttpUtility.HtmlDecode("&#xE019;");
         }
@@ -72,7 +74,22 @@ namespace ProjectManagmentApp.View
         {
             ZTask clickedItem = (ZTask)e.ClickedItem;
             ZTask zTask = taskManager.GetZTask(clickedItem.Id);
+            TaskId = clickedItem.Id;
             TaskDetailsFrame.Navigate(typeof(TaskDetails), zTask);
+            if (clickedItem.Completed == false)
+            {
+                MarkCompleted.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MarkCompleted.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void MarkCompleted_Click(object sender, RoutedEventArgs e)
+        {
+            taskManager.MarkCompleted(TaskId);
+            Frame.Navigate(typeof(MyTasksView));
         }
     }
 }

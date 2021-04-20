@@ -1,4 +1,5 @@
-﻿using ProjectManagmentApp.Model;
+﻿using ProjectManagmentApp.Data;
+using ProjectManagmentApp.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,7 +22,8 @@ namespace ProjectManagmentApp.View.TaskUserControls
 {
     public sealed partial class TaskData : UserControl
     {
-        private SolidColorBrush Zbrush = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
+        TaskManager taskManager = TaskManager.GetTaskManager();
+
         public ZTask zTask
         {
             get { return (ZTask)GetValue(zTaskProperty); }
@@ -53,6 +55,8 @@ namespace ProjectManagmentApp.View.TaskUserControls
         public TaskData()
         {
             this.InitializeComponent();
+            Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+            long userId = (long)localSettings.Values["Id"];
         }
     }
 }

@@ -17,7 +17,7 @@
         <TextBlock Text="{x:Bind zTask.TaskName}"
                    FontSize="26"
                    FontWeight="Bold"/>
-
+        <TextBlock Name="result"/>
         <StackPanel Orientation="Horizontal"
                     Margin="0,15,0,0">
             <TextBlock Text="Priority :" 

@@ -34,12 +34,12 @@
                     </StackPanel>
                 </Button>
                 <ListView Name="InCompleteTaskList" 
-                      Background="{StaticResource PrimaryColor}"
-                      Margin="30,0"
-                      CornerRadius="5"
-                      ItemsSource="{x:Bind inCompleteTaskList}"
-                      IsItemClickEnabled="True" 
-                      ItemClick="TaskList_ItemClick">
+                          Background="{StaticResource PrimaryColor}"
+                          Margin="30,0"
+                          CornerRadius="5"
+                          ItemsSource="{x:Bind inCompleteTaskList}"
+                          IsItemClickEnabled="True" 
+                          ItemClick="TaskList_ItemClick">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="model:ZTask" >
                             <local:TaskList />
@@ -63,13 +63,13 @@
                         <TextBlock Text="Completed Tasks"/>
                     </StackPanel>
                 </Button>
-                <ListView Name="CompletedTaskList" 
-                      Background="{StaticResource PrimaryColor}"
-                      Margin="30,0"
-                      CornerRadius="5"
-                      ItemsSource="{x:Bind completedTaskList}"
-                      IsItemClickEnabled="True" 
-                      ItemClick="TaskList_ItemClick">
+                <ListView Name="CompletedTaskList"
+                          Background="{StaticResource PrimaryColor}"
+                          Margin="30,0"
+                          CornerRadius="5"
+                          ItemsSource="{x:Bind completedTaskList}"
+                          IsItemClickEnabled="True" 
+                          ItemClick="TaskList_ItemClick">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="model:ZTask" >
                             <local:TaskList />
@@ -78,8 +78,20 @@
                 </ListView>
             </StackPanel>
         </ScrollViewer>
-        <Frame Name="TaskDetailsFrame"
-               Grid.Row="1"
-               Grid.Column="1"/>
+        <StackPanel Grid.Column="1"
+                    Margin="0,20,0,0">
+            <Button Name="MarkCompleted"
+                    Content="Completed"
+                    Background="{StaticResource PrimaryColor}"
+                    Visibility="Collapsed"
+                    Foreground="Green"
+                    BorderBrush="Green"
+                    HorizontalAlignment="Right"
+                    CornerRadius="4"
+                    Margin="0,10,50,0"
+                    Click="MarkCompleted_Click"/>
+            <Frame Name="TaskDetailsFrame"
+                   Margin="0,-30,0,0"/>
+        </StackPanel>
     </Grid>
 </Page>

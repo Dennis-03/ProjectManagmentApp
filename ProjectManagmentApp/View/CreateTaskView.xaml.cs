@@ -32,26 +32,28 @@ namespace ProjectManagmentApp.View
             this.InitializeComponent();
         }
 
-        private void PriorityComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ztask.Priority = Enum.Parse < PriorityEnum >(PriorityComboBox.Text);
-        }
+        //private void CreateTask_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ztask.TaskName = ITaskName.Text;
+        //    ztask.Description = ITaskDescripion.Text;
+        //    ztask.Priority = Enum.Parse<PriorityEnum>(PriorityComboBox.Text);
+        //    DisplayResult.Text = $"{ztask.TaskName},{ztask.Description},{ztask.AssignedTo},{ztask.Priority},{ztask.DueDate},{ztask.Completed}";
+        //}
 
-        private void CreateTask_Click(object sender, RoutedEventArgs e)
-        {
-            ztask.TaskName = ITaskName.Text;
-            ztask.Description = ITaskDescripion.Text;
-        }
+        //private void IDueDate_DateChanged(object sender, DatePickerValueChangedEventArgs e)
+        //{
+        //    DateTimeOffset date = (DateTimeOffset)IDueDate.SelectedDate;
+        //    ztask.DueDate = date.DateTime;
+        //}
 
-        private void IDueDate_DateChanged(object sender, DatePickerValueChangedEventArgs e)
-        {
-            DateTimeOffset date = (DateTimeOffset)IDueDate.SelectedDate;
-            ztask.DueDate = date.DateTime;
-        }
+        //private void IAssigedTo_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        //{
 
-        private void IAssigedTo_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        {
+        //}
 
-        }
+        //private void PriorityComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+
+        //}
     }
 }

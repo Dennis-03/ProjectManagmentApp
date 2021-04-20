@@ -63,6 +63,10 @@ namespace ProjectManagmentApp
             {
                 MainRenderFrame.Navigate(typeof(CreateTaskView));
             }
+            if (EditTask.IsSelected)
+            {
+                MainRenderFrame.Navigate(typeof(EditTask));
+            }
             if (Logout.IsSelected)
             {
                 LogoutUser();

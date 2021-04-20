@@ -135,6 +135,9 @@
     <Compile Include="View\CreateTaskView.xaml.cs">
       <DependentUpon>CreateTaskView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EditTask.xaml.cs">
+      <DependentUpon>EditTask.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MyTasksView.xaml.cs">
       <DependentUpon>MyTasksView.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,9 @@
     </Compile>
     <Compile Include="View\TaskDetails.xaml.cs">
       <DependentUpon>TaskDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TaskUserControls\TaskControls.xaml.cs">
+      <DependentUpon>TaskControls.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TaskUserControls\TaskData.xaml.cs">
       <DependentUpon>TaskData.xaml</DependentUpon>
@@ -185,6 +191,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\EditTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MyTasksView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -198,6 +208,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\TaskDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TaskUserControls\TaskControls.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

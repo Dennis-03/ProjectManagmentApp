@@ -37,22 +37,20 @@ namespace ProjectManagmentApp.Data
 
             TaskList.Add(addTask);
         }
+
+        public void AddTask(ZTask zTask)
+        { 
+            TaskList.Add(zTask);
+        }
+
         public List<ZTask> ListAllTasks()
         {
             return TaskList;
         }
 
-
-        public ZTask GetZTask(long Id)
+        public ZTask GetZTask(long taskId)
         {
-            foreach (var task in TaskList)
-            {
-                if (task.Id == Id)
-                {
-                    return task;
-                }
-            }
-            return null;
+            return TaskList.Find(task => task.Id == taskId);
         }
 
         public void UpdateTask(ZTask updateTask)
@@ -79,12 +77,14 @@ namespace ProjectManagmentApp.Data
 
         public List<ZTask> GetUserTasks(long userId)
         {
-            return TaskList.FindAll(task => task.AssignedTo == userId && task.Completed == false) ;
+            return TaskList.FindAll(task => task.AssignedTo == userId);
         }
 
-        public List<ZTask> GetUserCompletedTasks(long userId)
+        public void MarkCompleted(long taskId)
         {
-            return TaskList.FindAll(task => task.AssignedTo == userId && task.Completed == true);
+            ZTask zTask = GetZTask(taskId);
+            zTask.Completed = true;
+            UpdateTask(zTask);
         }
     }
 }
