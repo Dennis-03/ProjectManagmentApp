@@ -1,12 +1,8 @@
-﻿using ProjectManagmentApp.Data;
-using ProjectManagmentApp.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading;
-using System.Web;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -21,75 +17,14 @@ using Windows.UI.Xaml.Navigation;
 
 namespace ProjectManagmentApp.View
 {
-
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
     public sealed partial class MyTasksView : Page
     {
-        TaskManager taskManager = TaskManager.GetTaskManager();
-
-        private List<ZTask> inCompleteTaskList;
-        private List<ZTask> completedTaskList;
-        public long TaskId;
-
-        Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-
         public MyTasksView()
         {
-            long userId = (long)localSettings.Values["Id"];
             this.InitializeComponent();
-            inCompleteTaskList = new List<ZTask>(taskManager.GetUserTasks(userId).FindAll(task => task.Completed==false));
-            completedTaskList = new List<ZTask>(taskManager.GetUserTasks(userId).FindAll(task => task.Completed==true));
-            InCompleteDropLogo.Text = HttpUtility.HtmlDecode("&#xE019;");
-            CompletedDropLogo.Text = HttpUtility.HtmlDecode("&#xE019;");
-        }
-
-        private void InCompleteTasksButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (InCompleteTaskList.Visibility == Visibility.Visible)
-            {
-                InCompleteDropLogo.Text = HttpUtility.HtmlDecode("&#xE017;");
-                InCompleteTaskList.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                InCompleteDropLogo.Text = HttpUtility.HtmlDecode("&#xE019;");
-                InCompleteTaskList.Visibility = Visibility.Visible;
-            }
-        }
-
-        private void CompletedTasksButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (CompletedTaskList.Visibility == Visibility.Visible)
-            {
-                CompletedDropLogo.Text = HttpUtility.HtmlDecode("&#xE017;");
-                CompletedTaskList.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                CompletedDropLogo.Text = HttpUtility.HtmlDecode("&#xE019;");
-                CompletedTaskList.Visibility = Visibility.Visible;
-            }
-        }
-
-        private void TaskList_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            ZTask clickedItem = (ZTask)e.ClickedItem;
-            ZTask zTask = taskManager.GetZTask(clickedItem.Id);
-            TaskId = clickedItem.Id;
-            TaskDetailsFrame.Navigate(typeof(TaskDetails), zTask);
-            if (clickedItem.Completed == false)
-            {
-                MarkCompleted.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                MarkCompleted.Visibility = Visibility.Collapsed;
-            }
-        }
-
-        private void MarkCompleted_Click(object sender, RoutedEventArgs e)
-        {
-            taskManager.MarkCompleted(TaskId);
-            Frame.Navigate(typeof(MyTasksView));
         }
     }
 }

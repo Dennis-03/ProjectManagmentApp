@@ -21,7 +21,7 @@ namespace ProjectManagmentApp.Data
 
         private List<ZTask> TaskList = new List<ZTask>();
 
-        public void AddTask(string taskString,string description, PriorityEnum priority, long assignedTo, long assignedBy, DateTime assignedDate, DateTime dueDate,bool completed)
+        public void AddTask(string taskString,string description, PriorityEnum priority, uint assignedTo, uint assignedBy, DateTime assignedDate, DateTime dueDate)
         {
             ZTask addTask = new ZTask
             {
@@ -31,26 +31,27 @@ namespace ProjectManagmentApp.Data
                 AssignedBy = assignedBy,
                 AssignedDate = assignedDate,
                 DueDate = dueDate,
-                Priority = priority,
-                Completed=completed
+                Priority = priority
             };
 
             TaskList.Add(addTask);
         }
-
-        public void AddTask(ZTask zTask)
-        { 
-            TaskList.Add(zTask);
-        }
-
         public List<ZTask> ListAllTasks()
         {
             return TaskList;
         }
 
-        public ZTask GetZTask(long taskId)
+
+        public ZTask GetZTask(long Id)
         {
-            return TaskList.Find(task => task.Id == taskId);
+            foreach (var task in TaskList)
+            {
+                if (task.Id == Id)
+                {
+                    return task;
+                }
+            }
+            return null;
         }
 
         public void UpdateTask(ZTask updateTask)
@@ -65,7 +66,6 @@ namespace ProjectManagmentApp.Data
                     task.TaskName = updateTask.TaskName;
                     task.DueDate = updateTask.DueDate;
                     task.Comment = updateTask.Comment;
-                    task.Completed = updateTask.Completed;
                 }
             }
         }
@@ -73,18 +73,6 @@ namespace ProjectManagmentApp.Data
         public void DeleteTask(long taskId)
         {
             TaskList.RemoveAll(task => task.Id == taskId);
-        }
-
-        public List<ZTask> GetUserTasks(long userId)
-        {
-            return TaskList.FindAll(task => task.AssignedTo == userId);
-        }
-
-        public void MarkCompleted(long taskId)
-        {
-            ZTask zTask = GetZTask(taskId);
-            zTask.Completed = true;
-            UpdateTask(zTask);
         }
     }
 }

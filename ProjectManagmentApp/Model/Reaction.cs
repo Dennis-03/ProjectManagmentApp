@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectManagmentApp.Model
 {
-    public class Reaction
+    class Reaction
     {
         long Id = DateTime.Now.Ticks;
         public long ReactedToId { get; set; }

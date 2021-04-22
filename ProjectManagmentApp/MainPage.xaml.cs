@@ -1,5 +1,4 @@
-﻿using ProjectManagmentApp.Data;
-using ProjectManagmentApp.View;
+﻿using ProjectManagmentApp.View;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,24 +23,9 @@ namespace ProjectManagmentApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        UserManager userManager = UserManager.GetUserManager();
-
-        Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-
         public MainPage()
         {
             this.InitializeComponent();
-            userManager.AddUser("Dennis", "dennis");
-            userManager.AddUser("Saravana", "saravana");
-            MainSplitView.OpenPaneLength = 200;
-            MainSplitView.CompactPaneLength = 50;
-            TitleBlock.Visibility = Visibility.Visible;
-            NavigationMenu.Visibility = Visibility.Visible;
-            TasksMenu.IsSelected = true;
-            if (string.IsNullOrEmpty((string)localSettings.Values["UserName"]))
-            {
-                RedirectSignIn();
-            }
         }
 
         private void Hamburger_button_Click(object sender, RoutedEventArgs e)
@@ -49,54 +33,21 @@ namespace ProjectManagmentApp
             MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;
         }
 
-        private void NavigationMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void Navigation_menu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (TasksMenu.IsSelected)
+            if (Tasks_menu.IsSelected)
             {
                 MainRenderFrame.Navigate(typeof(TaskView));
             }
-            if (MyTasksMenu.IsSelected)
+            if (MyTasks_menu.IsSelected)
             {
                 MainRenderFrame.Navigate(typeof(MyTasksView));
             }
-            if (CreateTaskMenu.IsSelected)
+            if (CreateTask_menu.IsSelected)
             {
                 MainRenderFrame.Navigate(typeof(CreateTaskView));
             }
-            if (EditTask.IsSelected)
-            {
-                MainRenderFrame.Navigate(typeof(EditTask));
-            }
-            if (Logout.IsSelected)
-            {
-                LogoutUser();
-            }
-
-        }
-
-        public void RedirectSignIn()
-        {
-            MainRenderFrame.Navigate(typeof(SignIn));
-            HideMenu();
-        }
-
-
-
-        public void LogoutUser()
-        {
-            localSettings.Values["UserName"] = null;
-            localSettings.Values["Id"] = null;
-            MainRenderFrame.Navigate(typeof(MainPage));
-            HideMenu();
-        }
-
-
-        public void HideMenu()
-        {
-            MainSplitView.CompactPaneLength = 0;
-            MainSplitView.OpenPaneLength = 0;
-            TitleBlock.Visibility = Visibility.Collapsed;
-            NavigationMenu.Visibility = Visibility.Collapsed;
         }
     }
 }

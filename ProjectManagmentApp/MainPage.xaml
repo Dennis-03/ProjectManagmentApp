@@ -6,29 +6,22 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{StaticResource PrimaryColor}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Page.Resources>
-        <Style TargetType="ListBoxItem">
-            <Setter Property="Foreground" Value="AliceBlue"/>
-        </Style>
-    </Page.Resources>
-    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel x:Name="TitleBlock" 
-                    Orientation="Horizontal">
-            <Button Name="HamburgerButton"
+        <StackPanel Orientation="Horizontal">
+            <Button Name="Hamburger_button"
                     Content="&#xE700;"
                     FontFamily="Segoe MDL2 Assets"
                     FontSize="25"
                     Padding="10"
                     Click="Hamburger_button_Click"
-                    Background="{StaticResource PrimaryColor}"/>
-            <TextBlock Name="TitleBlockText" 
+                    />
+            <TextBlock Name="Title_block" 
                        Text="Project Managment"
                        Margin="10,0"
                        FontSize="18"
@@ -36,15 +29,15 @@
         </StackPanel>
         <SplitView DisplayMode="CompactInline"
                    Grid.Row="1"
-                   Name="MainSplitView"
-                   PaneBackground="{StaticResource PrimaryColor}">
+                   CompactPaneLength="50"
+                   OpenPaneLength="200"
+                   Name="MainSplitView">
             <SplitView.Pane>
                 <StackPanel Orientation="Vertical">
-                    <ListBox Name="NavigationMenu"
-                             CornerRadius="5"
-                             Background="{StaticResource PrimaryColor}"
-                             SelectionChanged="NavigationMenu_SelectionChanged">
-                        <ListBoxItem Name="TasksMenu">
+                    <ListBox Name="Navigation_menu"
+                             SelectionChanged="Navigation_menu_SelectionChanged">
+                        <ListBoxItem Name="Tasks_menu"
+                                     IsEnabled="True">
                             <StackPanel Orientation="Horizontal" >
                                 <TextBlock Text="&#xE160;"
                                    FontFamily="Segoe MDL2 Assets"
@@ -56,7 +49,7 @@
                                    FontSize="16"/>
                             </StackPanel>
                         </ListBoxItem>
-                        <ListBoxItem Name="MyTasksMenu">
+                        <ListBoxItem Name="MyTasks_menu">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="&#xE8CF;"
                                    FontFamily="Segoe MDL2 Assets"
@@ -68,7 +61,7 @@
                                    FontSize="16"/>
                             </StackPanel>
                         </ListBoxItem>
-                        <ListBoxItem Name="CreateTaskMenu">
+                        <ListBoxItem Name="CreateTask_menu">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="&#xE109;"
                                    FontFamily="Segoe MDL2 Assets"
@@ -76,30 +69,6 @@
                                    Padding="7"/>
                                 <TextBlock Margin="10,0" 
                                    Text="Create Tasks" 
-                                   VerticalAlignment="Center"
-                                   FontSize="16"/>
-                            </StackPanel>
-                        </ListBoxItem>
-                        <ListBoxItem Name="EditTask">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#xE75C;"
-                                   FontFamily="Segoe MDL2 Assets"
-                                   FontSize="20"
-                                   Padding="7"/>
-                                <TextBlock Margin="10,0" 
-                                   Text="Edit Task" 
-                                   VerticalAlignment="Center"
-                                   FontSize="16"/>
-                            </StackPanel>
-                        </ListBoxItem>
-                        <ListBoxItem Name="Logout">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#xE7EA;"
-                                   FontFamily="Segoe MDL2 Assets"
-                                   FontSize="20"
-                                   Padding="7"/>
-                                <TextBlock Margin="10,0" 
-                                   Text="Logout" 
                                    VerticalAlignment="Center"
                                    FontSize="16"/>
                             </StackPanel>

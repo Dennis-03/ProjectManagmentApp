@@ -1,7 +1,4 @@
-﻿using ProjectManagmentApp.Constants;
-using ProjectManagmentApp.Data;
-using ProjectManagmentApp.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,35 +22,9 @@ namespace ProjectManagmentApp.View
     /// </summary>
     public sealed partial class CreateTaskView : Page
     {
-        private ZTask ztask = new ZTask();
-
         public CreateTaskView()
         {
             this.InitializeComponent();
         }
-
-        //private void CreateTask_Click(object sender, RoutedEventArgs e)
-        //{
-        //    ztask.TaskName = ITaskName.Text;
-        //    ztask.Description = ITaskDescripion.Text;
-        //    ztask.Priority = Enum.Parse<PriorityEnum>(PriorityComboBox.Text);
-        //    DisplayResult.Text = $"{ztask.TaskName},{ztask.Description},{ztask.AssignedTo},{ztask.Priority},{ztask.DueDate},{ztask.Completed}";
-        //}
-
-        //private void IDueDate_DateChanged(object sender, DatePickerValueChangedEventArgs e)
-        //{
-        //    DateTimeOffset date = (DateTimeOffset)IDueDate.SelectedDate;
-        //    ztask.DueDate = date.DateTime;
-        //}
-
-        //private void IAssigedTo_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        //{
-
-        //}
-
-        //private void PriorityComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-
-        //}
     }
 }
